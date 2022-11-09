@@ -47,9 +47,7 @@ namespace TestBugalho
             game.PlayValue(1, 5, 0);
             game.PlayValue(1, 3, 1);
             Assert.AreEqual(8, game.GetBoardPoints(1));
-            Assert.AreEqual(8, game.boardA.CalculatePoints());
         }
-
         
         [TestMethod]
         public void TestBoardComplexPointsOnColumnA()
@@ -59,7 +57,6 @@ namespace TestBugalho
             game.PlayValue(1, 2, 0);
             game.PlayValue(1, 3, 0);
             Assert.AreEqual(14, game.GetBoardPoints(1));
-            Assert.AreEqual(14, game.boardA.CalculatePoints());
         }
 
         [TestMethod]
@@ -76,7 +73,6 @@ namespace TestBugalho
             game.PlayValue(2, 5, 2);
             game.PlayValue(2, 1, 0);
             Assert.AreEqual(38, game.GetBoardPoints(2));
-            Assert.AreEqual(38, game.boardB.CalculatePoints());
         }
 
         [TestMethod]
@@ -85,8 +81,8 @@ namespace TestBugalho
             Game game = new();
             game.PlayValue(1, 2, 0);
             game.PlayValue(2, 2, 0);
-            Assert.AreEqual(2, game.boardB.CalculatePoints());
-            Assert.AreEqual(0, game.boardA.CalculatePoints());
+            Assert.AreEqual(2, game.GetBoardPoints(2));
+            Assert.AreEqual(0, game.GetBoardPoints(1));
 
         }
 
@@ -97,11 +93,9 @@ namespace TestBugalho
             game.PlayValue(1, 2, 0);
             game.PlayValue(1, 2, 0);
             game.PlayValue(1, 2, 0);
-            Console.WriteLine(game);
             game.PlayValue(2, 2, 0);
-            Console.WriteLine(game);
-            Assert.AreEqual(2, game.boardB.CalculatePoints());
-            Assert.AreEqual(0, game.boardA.CalculatePoints());
+            Assert.AreEqual(2, game.GetBoardPoints(2));
+            Assert.AreEqual(0, game.GetBoardPoints(1));
 
         }
     }
