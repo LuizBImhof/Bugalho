@@ -4,7 +4,7 @@ namespace Bugalho
 {
     public class Board
     {
-     
+
         public List<int> columnA;
         public List<int> columnB;
         public List<int> columnC;
@@ -25,13 +25,13 @@ namespace Bugalho
 
         internal void PlayValue(int value, int column)
         {
-            
+
             if (column == 0)
                 columnA.Add(value);
-            else if(column == 1)
+            else if (column == 1)
                 columnB.Add(value);
-            else if(column == 2)
-                columnC.Add(value);     
+            else if (column == 2)
+                columnC.Add(value);
             AddPoints(value, column);
         }
 
@@ -101,17 +101,17 @@ namespace Bugalho
 
         private void CalculatePointsWhenTwoOfTwoEqual(int value)
         {
-            points += (value * 2) * 2 - value;
+            points += 3 * value;
         }
 
         private void CalculatePointsWhenTwoOfThreeEqual(int value)
         {
-            points += (value * 2) * 2 - 2 * value;
+            points += 2 * value;
         }
 
         private void CalculatePointsWhenThreeEqual(int value)
         {
-            points = points - (value * 2) * 2 - value;
+            points -= 5 * value;
             points += (value * 3) * 3;
         }
 
@@ -133,12 +133,12 @@ namespace Bugalho
         public override string? ToString()
         {
             string result = string.Empty;
-            for(int i = 0; i<3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (columnA.Count > i)
                     result += "|" + columnA[i] + "|";
                 else
-                    result += "|" +0 + "|";
+                    result += "|" + 0 + "|";
                 if (columnB.Count > i)
                     result += columnB[i] + "|";
                 else
@@ -152,6 +152,6 @@ namespace Bugalho
             return result;
         }
 
-
     }
+        
 }
