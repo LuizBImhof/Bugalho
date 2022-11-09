@@ -49,21 +49,21 @@ namespace Bugalho
         {
             if (column == 0)
             {
-                if (columnA.Contains(value))
+                while (columnA.Contains(value))
                 {
                     columnA.Remove(value);
                 }
             }
             else if (column == 1)
             {
-                if (columnB.Contains(value))
+                while (columnB.Contains(value))
                 {
                     columnB.Remove(value);
                 }
             }
             else if (column == 2)
             {
-                if (columnC.Contains(value))
+                while (columnC.Contains(value))
                 {
                     columnC.Remove(value);
                 }
