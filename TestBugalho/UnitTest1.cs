@@ -84,6 +84,19 @@ namespace TestBugalho
         {
             Game game = new();
             game.PlayValue(1, 2, 0);
+            game.PlayValue(2, 2, 0);
+            Assert.AreEqual(2, game.boardB.CalculatePoints());
+            Assert.AreEqual(0, game.boardA.CalculatePoints());
+
+        }
+
+        [TestMethod]
+        public void TestComplexRemovalOfPoints()
+        {
+            Game game = new();
+            game.PlayValue(1, 2, 0);
+            game.PlayValue(1, 2, 0);
+            game.PlayValue(1, 2, 0);
             Console.WriteLine(game);
             game.PlayValue(2, 2, 0);
             Console.WriteLine(game);
