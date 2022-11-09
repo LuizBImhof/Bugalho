@@ -47,6 +47,7 @@ namespace TestBugalho
             game.PlayValue(1, 5, 0);
             game.PlayValue(1, 3, 1);
             Assert.AreEqual(8, game.GetBoardPoints(1));
+            Assert.AreEqual(8, game.boardA.CalculatePoints());
         }
 
         
@@ -57,8 +58,8 @@ namespace TestBugalho
             game.PlayValue(1, 3, 0);
             game.PlayValue(1, 2, 0);
             game.PlayValue(1, 3, 0);
-            Console.WriteLine(game.ToString());
             Assert.AreEqual(14, game.GetBoardPoints(1));
+            Assert.AreEqual(14, game.boardA.CalculatePoints());
         }
 
         [TestMethod]
@@ -75,9 +76,10 @@ namespace TestBugalho
             game.PlayValue(2, 5, 2);
             game.PlayValue(2, 1, 0);
             Assert.AreEqual(38, game.GetBoardPoints(2));
+            Assert.AreEqual(38, game.boardB.CalculatePoints());//calculating without using last played value 
         }
 
-        [TestMethod]
+        // [TestMethod] later
         public void TestRemovalOfPoints()
         {
             Game game = new();
