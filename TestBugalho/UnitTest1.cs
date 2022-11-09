@@ -76,19 +76,19 @@ namespace TestBugalho
             game.PlayValue(2, 5, 2);
             game.PlayValue(2, 1, 0);
             Assert.AreEqual(38, game.GetBoardPoints(2));
-            Assert.AreEqual(38, game.boardB.CalculatePoints());//calculating without using last played value 
+            Assert.AreEqual(38, game.boardB.CalculatePoints());
         }
 
-        // [TestMethod] later
-        public void TestRemovalOfPoints()
+        [TestMethod]
+        public void TestSimpleRemovalOfPoints()
         {
             Game game = new();
             game.PlayValue(1, 2, 0);
             Console.WriteLine(game);
             game.PlayValue(2, 2, 0);
             Console.WriteLine(game);
-            Assert.AreEqual(2, game.GetBoardPoints(2));
-            Assert.AreEqual(0, game.GetBoardPoints(1));
+            Assert.AreEqual(2, game.boardB.CalculatePoints());
+            Assert.AreEqual(0, game.boardA.CalculatePoints());
 
         }
     }

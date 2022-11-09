@@ -28,7 +28,7 @@
 
         private int GetPoints(Board board)
         {
-            int points = board.GetPoints();
+            int points = board.CalculatePoints();
             return points;
         }
 

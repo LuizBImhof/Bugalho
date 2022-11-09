@@ -56,11 +56,17 @@ namespace Bugalho
             }
             else if (column == 1)
             {
-
+                if (columnB.Contains(value))
+                {
+                    columnB.Remove(value);
+                }
             }
             else if (column == 2)
             {
-
+                if (columnC.Contains(value))
+                {
+                    columnC.Remove(value);
+                }
             }
             Console.WriteLine("points before removing: " + points);
             AddPoints(value, column);
