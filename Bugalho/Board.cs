@@ -52,129 +52,88 @@
 
         public int CalculatePoints()
         {
-            return CalculateCollumnA() + CalculateCollumnB() + CalculateCollumnC();
+            return CalculateCollumn(columnA) + CalculateCollumn(columnB) + CalculateCollumn(columnC);
         }
-        private int CalculateCollumnA()
+
+        private static int CalculateCollumn(List<int> column)
         {
-            columnA.Sort();
+            column.Sort();
             int columnAPoints = 0;
-            if (columnA.Count == 1)
-            {
-                columnAPoints = columnA[0];
-            }
-            else if (columnA.Count == 2)
-            {
-                if (columnA[0] == columnA[1])
-                {
-                    columnAPoints = 2 *(columnA[0] + columnA[1]);
-                }
-                else
-                {
-                    columnAPoints = columnA[0] + columnA[1];
-                }
-            }
-            else if (columnA.Count == 3)
-            {
-                if (columnA[0] == columnA[1] && columnA[1] == columnA[2])
-                {
-                    columnAPoints = 3 *(columnA[0] + columnA[1] + columnA[2]);
-                }
-                else if (columnA[0] == columnA[1]) 
-                {
-                    columnAPoints = (2 * (columnA[0]+ columnA[1])) + columnA[2];
-                }
-                else if(columnA[1] == columnA[2])
-                {
-                    columnAPoints = (2 * (columnA[1] + columnA[2])) + columnA[0];
-                }
-                else
-                {
-                    columnAPoints = columnA[0] + columnA[1] + columnA[2];
-                }
-            }
+            if (column.Count == 1)
+                columnAPoints = column[0];
+            else if (column.Count == 2)
+                columnAPoints = CalculateTwoValues(column);
+            else if (column.Count == 3)
+                columnAPoints = CalculateThreeValues(column);
             return columnAPoints;
         }
-        private int CalculateCollumnB()
+
+        private static int CalculateThreeValues(List<int> column)
         {
-            columnB.Sort();
-            int columnBPoints = 0;
-            if (columnB.Count == 1)
+            int columnAPoints;
+            if (ThreeSameValues(column))
             {
-                columnBPoints = columnB[0];
+                columnAPoints = CalculateValueWhenAllThreeValuesAreTheSame(column[0]);
             }
-            else if (columnB.Count == 2)
+            else if (FirstTwoSameValues(column))
             {
-                if (columnB[0] == columnB[1])
-                {
-                    columnBPoints = 2 * (columnB[0] + columnB[1]);
-                }
-                else
-                {
-                    columnBPoints = columnB[0] + columnB[1];
-                }
+                columnAPoints = CalculateTwoOfTheSameValues(column[0]) + column[2];
             }
-            else if (columnB.Count == 3)
+            else if (LastTwoSameValues(column))
             {
-                if (columnB[0] == columnB[1] && columnB[1] == columnB[2])
-                {
-                    columnBPoints = 3 * (columnB[0] + columnB[1] + columnB[2]);
-                }
-                else if (columnB[0] == columnB[1])
-                {
-                    columnBPoints = (2 * (columnB[0] + columnB[1])) + columnB[2];
-                }
-                else if (columnB[1] == columnB[2])
-                {
-                    columnBPoints = (2 * (columnB[1] + columnB[2])) + columnB[0];
-                } 
-                else
-                {
-                    columnBPoints = columnB[0] + columnB[1] + columnB[2];
-                }
+                columnAPoints = CalculateTwoOfTheSameValues(column[1]) + column[0];
             }
-            return columnBPoints;
+            else
+            {
+                columnAPoints = CalculateThreeDifferentValues(column);
+            }
+
+            return columnAPoints;
         }
 
-
-        private int CalculateCollumnC()
+        private static int CalculateTwoValues(List<int> column)
         {
-            columnC.Sort();
-            int columnCPoints = 0;
-            if (columnC.Count == 1)
+            int columnAPoints;
+            if (FirstTwoSameValues(column))
             {
-                columnCPoints = columnC[0];
+                columnAPoints = CalculateTwoOfTheSameValues(column[0]);
             }
-            else if (columnC.Count == 2)
+            else
             {
-                if (columnC[0] == columnC[1])
-                {
-                    columnCPoints = 2 * (columnC[0] + columnC[1]);
-                }
-                else
-                {
-                    columnCPoints = columnC[0] + columnC[1];
-                }
+                columnAPoints = column[0] + column[1];
             }
-            else if (columnC.Count == 3)
-            {
-                if (columnC[0] == columnC[1] && columnC[1] == columnC[2])
-                {
-                    columnCPoints = 3 * (columnC[0] + columnC[1] + columnC[2]);
-                }
-                else if (columnC[0] == columnC[1])
-                {
-                    columnCPoints = (2 * (columnC[0] + columnC[1])) + columnC[2];
-                }
-                else if (columnC[1] == columnC[2])
-                {
-                    columnCPoints = (2 * (columnC[1] + columnC[2])) + columnC[0];
-                }
-                else
-                {
-                    columnCPoints = columnC[0] + columnC[1] + columnC[2];
-                }
-            }
-            return columnCPoints;
+
+            return columnAPoints;
+        }
+
+        private static int CalculateThreeDifferentValues(List<int> column)
+        {
+            return column[0] + column[1] + column[2];
+        }
+
+        private static int CalculateValueWhenAllThreeValuesAreTheSame(int value)
+        {
+            return 9 * value;
+        }
+                
+        private static int CalculateTwoOfTheSameValues(int value)
+        {
+            return 4 * value;
+        }
+
+        private static bool LastTwoSameValues(List<int> column)
+        {
+            return column[1] == column[2];
+        }
+
+        private static bool FirstTwoSameValues(List<int> column)
+        {
+            return column[0] == column[1];
+        }
+
+        private static bool ThreeSameValues(List<int> column)
+        {
+            return column[0] == column[1] && column[1] == column[2];
         }
 
         public override string? ToString()
