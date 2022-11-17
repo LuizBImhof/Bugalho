@@ -3,8 +3,8 @@
     public class Game
     {     
         
-        public Board boardA;
-        public Board boardB;
+        private Board boardA;
+        private Board boardB;
 
         public Game ()
         {

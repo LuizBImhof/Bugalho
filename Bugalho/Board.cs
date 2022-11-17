@@ -3,9 +3,9 @@
     public class Board
     {
 
-        public List<int> columnA;
-        public List<int> columnB;
-        public List<int> columnC;
+        private List<int> columnA;
+        private List<int> columnB;
+        private List<int> columnC;
 
         public Board()
         {
