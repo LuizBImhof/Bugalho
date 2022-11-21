@@ -18,11 +18,26 @@
         {
 
             if (column == 0)
-                columnA.Add(value);
+            {
+                if (columnA.Count < 3)
+                    columnA.Add(value);
+                else
+                    throw new ArgumentOutOfRangeException();
+            }
             else if (column == 1)
-                columnB.Add(value);
+            {
+                if (columnB.Count < 3)
+                    columnB.Add(value);
+                else
+                    throw new ArgumentOutOfRangeException();
+            }
             else if (column == 2)
-                columnC.Add(value);
+            {
+                if (columnC.Count < 3)
+                    columnC.Add(value);
+                else
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         internal void RemoveValue(int value, int column)

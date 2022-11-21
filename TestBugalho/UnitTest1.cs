@@ -48,7 +48,6 @@ namespace TestBugalho
             game.PlayValue(2, 2, 0);
             Assert.AreEqual(2, game.GetBoardPoints(2));
             Assert.AreEqual(0, game.GetBoardPoints(1));
-
         }
 
         [TestMethod]
@@ -61,7 +60,18 @@ namespace TestBugalho
             game.PlayValue(2, 2, 0);
             Assert.AreEqual(2, game.GetBoardPoints(2));
             Assert.AreEqual(0, game.GetBoardPoints(1));
+        }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]  
+        public void TestPlayingMoreThanThreeOnSameColumn()
+        {
+            Game game = new();
+            game.PlayValue(1,2,0);
+            game.PlayValue(1,2,0);
+            game.PlayValue(1,2,0);
+            game.PlayValue(1,2,0);
+            Assert.AreEqual(18, game.GetBoardPoints(1));
         }
     }
 }
