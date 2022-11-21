@@ -18,26 +18,19 @@
         {
 
             if (column == 0)
-            {
-                if (columnA.Count < 3)
-                    columnA.Add(value);
-                else
-                    throw new ArgumentOutOfRangeException();
-            }
+                CheckIfValidMoveAndAddValue(value, columnA);
             else if (column == 1)
-            {
-                if (columnB.Count < 3)
-                    columnB.Add(value);
-                else
-                    throw new ArgumentOutOfRangeException();
-            }
+                CheckIfValidMoveAndAddValue(value, columnB);
             else if (column == 2)
-            {
-                if (columnC.Count < 3)
-                    columnC.Add(value);
-                else
-                    throw new ArgumentOutOfRangeException();
-            }
+                CheckIfValidMoveAndAddValue(value, columnC);
+        }
+
+        private void CheckIfValidMoveAndAddValue(int value, List<int> column)
+        {
+            if (column.Count < 3)
+                column.Add(value);
+            else
+                throw new ArgumentOutOfRangeException();
         }
 
         internal void RemoveValue(int value, int column)

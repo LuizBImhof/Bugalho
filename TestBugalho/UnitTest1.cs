@@ -71,7 +71,6 @@ namespace TestBugalho
             game.PlayValue(1,2,0);
             game.PlayValue(1,2,0);
             game.PlayValue(1,2,0);
-            Assert.AreEqual(18, game.GetBoardPoints(1));
         }
     }
 }
